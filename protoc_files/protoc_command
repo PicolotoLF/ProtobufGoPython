@@ -1,0 +1,5 @@
+protoc -I=../protoc_files --python_out=. ../protoc_files/requests_mercadolibre.proto
+
+python -m grpc_tools.protoc -I=../protoc_files — python_out=. — grpc_python_out=. ../protoc_files/requests_mercadolibre.proto
+
+protoc -I ../protoc_files/ -I${GOPATH}/src --go_out=plugins=grpc:. ../protoc_files/requests_mercadolibre.proto
