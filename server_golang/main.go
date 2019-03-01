@@ -5,8 +5,9 @@ import (
 	"log"
 	"net"
 
-	"google.golang.org/grpc"
 	pb "requests_mercadolibre"
+
+	"google.golang.org/grpc"
 )
 
 const (
@@ -18,7 +19,7 @@ type server struct{}
 
 func (s *server) SayHello(ctx context.Context, in *pb.PingMessage) (*pb.PingMessage, error) {
 	log.Printf("Received: %v", in.Greeting)
-	return &pb.PingMessage{Greeting: "Receive"}, nil
+	return &pb.PingMessage{Greeting: "Receive", Tos: "WORKS"}, nil
 }
 
 func main() {

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='api',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1brequests_mercadolibre.proto\x12\x03\x61pi\"\x1f\n\x0bPingMessage\x12\x10\n\x08greeting\x18\x01 \x01(\t28\n\x04Ping\x12\x30\n\x08SayHello\x12\x10.api.PingMessage\x1a\x10.api.PingMessage\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1brequests_mercadolibre.proto\x12\x03\x61pi\",\n\x0bPingMessage\x12\x10\n\x08greeting\x18\x01 \x01(\t\x12\x0b\n\x03tos\x18\x02 \x01(\t28\n\x04Ping\x12\x30\n\x08SayHello\x12\x10.api.PingMessage\x1a\x10.api.PingMessage\"\x00\x62\x06proto3')
 )
 
 
@@ -39,6 +39,13 @@ _PINGMESSAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tos', full_name='api.PingMessage.tos', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -52,7 +59,7 @@ _PINGMESSAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=36,
-  serialized_end=67,
+  serialized_end=80,
 )
 
 DESCRIPTOR.message_types_by_name['PingMessage'] = _PINGMESSAGE
@@ -73,8 +80,8 @@ _PING = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=69,
-  serialized_end=125,
+  serialized_start=82,
+  serialized_end=138,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
