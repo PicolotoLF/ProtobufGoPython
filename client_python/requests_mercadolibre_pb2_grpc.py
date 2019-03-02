@@ -4,7 +4,7 @@ import grpc
 import requests_mercadolibre_pb2 as requests__mercadolibre__pb2
 
 
-class PingStub(object):
+class RequestStub(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -15,13 +15,13 @@ class PingStub(object):
       channel: A grpc.Channel.
     """
     self.RequestGo = channel.unary_unary(
-        '/api.Ping/RequestGo',
+        '/api.Request/RequestGo',
         request_serializer=requests__mercadolibre__pb2.ListURLs.SerializeToString,
         response_deserializer=requests__mercadolibre__pb2.Resp.FromString,
         )
 
 
-class PingServicer(object):
+class RequestServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -33,7 +33,7 @@ class PingServicer(object):
     raise NotImplementedError('Method not implemented!')
 
 
-def add_PingServicer_to_server(servicer, server):
+def add_RequestServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'RequestGo': grpc.unary_unary_rpc_method_handler(
           servicer.RequestGo,
@@ -42,5 +42,5 @@ def add_PingServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'api.Ping', rpc_method_handlers)
+      'api.Request', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

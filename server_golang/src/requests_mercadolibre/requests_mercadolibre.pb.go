@@ -108,16 +108,16 @@ func init() {
 func init() { proto.RegisterFile("requests_mercadolibre.proto", fileDescriptor_b5366491349a4025) }
 
 var fileDescriptor_b5366491349a4025 = []byte{
-	// 144 bytes of a gzipped FileDescriptorProto
+	// 141 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x2e, 0x4a, 0x2d, 0x2c,
 	0x4d, 0x2d, 0x2e, 0x29, 0x8e, 0xcf, 0x4d, 0x2d, 0x4a, 0x4e, 0x4c, 0xc9, 0xcf, 0xc9, 0x4c, 0x2a,
 	0x4a, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x4e, 0x2c, 0xc8, 0x54, 0x92, 0xe3, 0xe2,
 	0xf0, 0xc9, 0x2c, 0x2e, 0x09, 0x0d, 0xf2, 0x29, 0x16, 0x12, 0xe2, 0x62, 0x29, 0x2d, 0xca, 0x29,
 	0x96, 0x60, 0x54, 0x60, 0xd6, 0xe0, 0x0c, 0x02, 0xb3, 0x95, 0xa4, 0xb8, 0x58, 0x82, 0x52, 0x8b,
-	0x0b, 0x40, 0x72, 0x45, 0xa9, 0xc5, 0x05, 0x30, 0x39, 0x10, 0xdb, 0x48, 0x9f, 0x8b, 0x25, 0x20,
-	0x33, 0x2f, 0x5d, 0x48, 0x9d, 0x8b, 0x33, 0x08, 0x62, 0x8f, 0x7b, 0xbe, 0x10, 0xaf, 0x5e, 0x62,
-	0x41, 0xa6, 0x1e, 0xcc, 0x4c, 0x29, 0x4e, 0x30, 0x17, 0x64, 0x84, 0x12, 0x43, 0x12, 0x1b, 0xd8,
-	0x62, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xaa, 0x99, 0xda, 0x05, 0x97, 0x00, 0x00, 0x00,
+	0x0b, 0x40, 0x72, 0x45, 0xa9, 0xc5, 0x05, 0x30, 0x39, 0x10, 0xdb, 0xc8, 0x88, 0x8b, 0x3d, 0x08,
+	0x62, 0xbe, 0x90, 0x3a, 0x17, 0x27, 0x94, 0xe9, 0x9e, 0x2f, 0xc4, 0xab, 0x97, 0x58, 0x90, 0xa9,
+	0x07, 0x33, 0x56, 0x8a, 0x13, 0xcc, 0x05, 0x99, 0xa2, 0xc4, 0x90, 0xc4, 0x06, 0xb6, 0xdb, 0x18,
+	0x10, 0x00, 0x00, 0xff, 0xff, 0xe1, 0xbd, 0xe1, 0x72, 0x9a, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -128,64 +128,64 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// PingClient is the client API for Ping service.
+// RequestClient is the client API for Request service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type PingClient interface {
+type RequestClient interface {
 	RequestGo(ctx context.Context, in *ListURLs, opts ...grpc.CallOption) (*Resp, error)
 }
 
-type pingClient struct {
+type requestClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewPingClient(cc *grpc.ClientConn) PingClient {
-	return &pingClient{cc}
+func NewRequestClient(cc *grpc.ClientConn) RequestClient {
+	return &requestClient{cc}
 }
 
-func (c *pingClient) RequestGo(ctx context.Context, in *ListURLs, opts ...grpc.CallOption) (*Resp, error) {
+func (c *requestClient) RequestGo(ctx context.Context, in *ListURLs, opts ...grpc.CallOption) (*Resp, error) {
 	out := new(Resp)
-	err := c.cc.Invoke(ctx, "/api.Ping/RequestGo", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Request/RequestGo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// PingServer is the server API for Ping service.
-type PingServer interface {
+// RequestServer is the server API for Request service.
+type RequestServer interface {
 	RequestGo(context.Context, *ListURLs) (*Resp, error)
 }
 
-func RegisterPingServer(s *grpc.Server, srv PingServer) {
-	s.RegisterService(&_Ping_serviceDesc, srv)
+func RegisterRequestServer(s *grpc.Server, srv RequestServer) {
+	s.RegisterService(&_Request_serviceDesc, srv)
 }
 
-func _Ping_RequestGo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Request_RequestGo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListURLs)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PingServer).RequestGo(ctx, in)
+		return srv.(RequestServer).RequestGo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.Ping/RequestGo",
+		FullMethod: "/api.Request/RequestGo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PingServer).RequestGo(ctx, req.(*ListURLs))
+		return srv.(RequestServer).RequestGo(ctx, req.(*ListURLs))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Ping_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "api.Ping",
-	HandlerType: (*PingServer)(nil),
+var _Request_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "api.Request",
+	HandlerType: (*RequestServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "RequestGo",
-			Handler:    _Ping_RequestGo_Handler,
+			Handler:    _Request_RequestGo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

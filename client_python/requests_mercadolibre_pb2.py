@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='api',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1brequests_mercadolibre.proto\x12\x03\x61pi\"\x18\n\x08ListURLs\x12\x0c\n\x04urls\x18\x01 \x03(\t\"\x14\n\x04Resp\x12\x0c\n\x04resp\x18\x01 \x03(\t2/\n\x04Ping\x12\'\n\tRequestGo\x12\r.api.ListURLs\x1a\t.api.Resp\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1brequests_mercadolibre.proto\x12\x03\x61pi\"\x18\n\x08ListURLs\x12\x0c\n\x04urls\x18\x01 \x03(\t\"\x14\n\x04Resp\x12\x0c\n\x04resp\x18\x01 \x03(\t22\n\x07Request\x12\'\n\tRequestGo\x12\r.api.ListURLs\x1a\t.api.Resp\"\x00\x62\x06proto3')
 )
 
 
@@ -106,18 +106,18 @@ _sym_db.RegisterMessage(Resp)
 
 
 
-_PING = _descriptor.ServiceDescriptor(
-  name='Ping',
-  full_name='api.Ping',
+_REQUEST = _descriptor.ServiceDescriptor(
+  name='Request',
+  full_name='api.Request',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   serialized_start=84,
-  serialized_end=131,
+  serialized_end=134,
   methods=[
   _descriptor.MethodDescriptor(
     name='RequestGo',
-    full_name='api.Ping.RequestGo',
+    full_name='api.Request.RequestGo',
     index=0,
     containing_service=None,
     input_type=_LISTURLS,
@@ -125,8 +125,8 @@ _PING = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_PING)
+_sym_db.RegisterServiceDescriptor(_REQUEST)
 
-DESCRIPTOR.services_by_name['Ping'] = _PING
+DESCRIPTOR.services_by_name['Request'] = _REQUEST
 
 # @@protoc_insertion_point(module_scope)

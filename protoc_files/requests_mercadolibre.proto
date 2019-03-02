@@ -9,6 +9,6 @@ message Resp{
   repeated string resp = 1;
 }
 
-service Ping {
+service Request {
   rpc RequestGo(ListURLs) returns (Resp) {}
 }
