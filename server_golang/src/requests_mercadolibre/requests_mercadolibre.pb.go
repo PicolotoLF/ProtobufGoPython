@@ -22,55 +22,87 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type PingMessage struct {
-	Greeting             string   `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
-	Tos                  string   `protobuf:"bytes,2,opt,name=tos,proto3" json:"tos,omitempty"`
+type ListURLs struct {
+	Urls                 []string `protobuf:"bytes,1,rep,name=urls,proto3" json:"urls,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PingMessage) Reset()         { *m = PingMessage{} }
-func (m *PingMessage) String() string { return proto.CompactTextString(m) }
-func (*PingMessage) ProtoMessage()    {}
-func (*PingMessage) Descriptor() ([]byte, []int) {
+func (m *ListURLs) Reset()         { *m = ListURLs{} }
+func (m *ListURLs) String() string { return proto.CompactTextString(m) }
+func (*ListURLs) ProtoMessage()    {}
+func (*ListURLs) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5366491349a4025, []int{0}
 }
 
-func (m *PingMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PingMessage.Unmarshal(m, b)
+func (m *ListURLs) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListURLs.Unmarshal(m, b)
 }
-func (m *PingMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PingMessage.Marshal(b, m, deterministic)
+func (m *ListURLs) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListURLs.Marshal(b, m, deterministic)
 }
-func (m *PingMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PingMessage.Merge(m, src)
+func (m *ListURLs) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListURLs.Merge(m, src)
 }
-func (m *PingMessage) XXX_Size() int {
-	return xxx_messageInfo_PingMessage.Size(m)
+func (m *ListURLs) XXX_Size() int {
+	return xxx_messageInfo_ListURLs.Size(m)
 }
-func (m *PingMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_PingMessage.DiscardUnknown(m)
+func (m *ListURLs) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListURLs.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_PingMessage proto.InternalMessageInfo
+var xxx_messageInfo_ListURLs proto.InternalMessageInfo
 
-func (m *PingMessage) GetGreeting() string {
+func (m *ListURLs) GetUrls() []string {
 	if m != nil {
-		return m.Greeting
+		return m.Urls
 	}
-	return ""
+	return nil
 }
 
-func (m *PingMessage) GetTos() string {
+type Resp struct {
+	Resp                 []string `protobuf:"bytes,1,rep,name=resp,proto3" json:"resp,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Resp) Reset()         { *m = Resp{} }
+func (m *Resp) String() string { return proto.CompactTextString(m) }
+func (*Resp) ProtoMessage()    {}
+func (*Resp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_b5366491349a4025, []int{1}
+}
+
+func (m *Resp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Resp.Unmarshal(m, b)
+}
+func (m *Resp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Resp.Marshal(b, m, deterministic)
+}
+func (m *Resp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Resp.Merge(m, src)
+}
+func (m *Resp) XXX_Size() int {
+	return xxx_messageInfo_Resp.Size(m)
+}
+func (m *Resp) XXX_DiscardUnknown() {
+	xxx_messageInfo_Resp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Resp proto.InternalMessageInfo
+
+func (m *Resp) GetResp() []string {
 	if m != nil {
-		return m.Tos
+		return m.Resp
 	}
-	return ""
+	return nil
 }
 
 func init() {
-	proto.RegisterType((*PingMessage)(nil), "api.PingMessage")
+	proto.RegisterType((*ListURLs)(nil), "api.ListURLs")
+	proto.RegisterType((*Resp)(nil), "api.Resp")
 }
 
 func init() { proto.RegisterFile("requests_mercadolibre.proto", fileDescriptor_b5366491349a4025) }
@@ -79,13 +111,13 @@ var fileDescriptor_b5366491349a4025 = []byte{
 	// 144 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x2e, 0x4a, 0x2d, 0x2c,
 	0x4d, 0x2d, 0x2e, 0x29, 0x8e, 0xcf, 0x4d, 0x2d, 0x4a, 0x4e, 0x4c, 0xc9, 0xcf, 0xc9, 0x4c, 0x2a,
-	0x4a, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x4e, 0x2c, 0xc8, 0x54, 0xb2, 0xe6, 0xe2,
-	0x0e, 0xc8, 0xcc, 0x4b, 0xf7, 0x4d, 0x2d, 0x2e, 0x4e, 0x4c, 0x4f, 0x15, 0x92, 0xe2, 0xe2, 0x48,
-	0x2f, 0x4a, 0x4d, 0x2d, 0xc9, 0xcc, 0x4b, 0x97, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c, 0x82, 0xf3,
-	0x85, 0x04, 0xb8, 0x98, 0x4b, 0xf2, 0x8b, 0x25, 0x98, 0xc0, 0xc2, 0x20, 0xa6, 0x91, 0x05, 0x17,
-	0x0b, 0x48, 0xb3, 0x90, 0x01, 0x17, 0x47, 0x70, 0x62, 0xa5, 0x47, 0x6a, 0x4e, 0x4e, 0xbe, 0x90,
-	0x80, 0x5e, 0x62, 0x41, 0xa6, 0x1e, 0x92, 0x99, 0x52, 0x18, 0x22, 0x4a, 0x0c, 0x49, 0x6c, 0x60,
-	0x27, 0x18, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xb9, 0x0d, 0x49, 0xe5, 0xa1, 0x00, 0x00, 0x00,
+	0x4a, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x4e, 0x2c, 0xc8, 0x54, 0x92, 0xe3, 0xe2,
+	0xf0, 0xc9, 0x2c, 0x2e, 0x09, 0x0d, 0xf2, 0x29, 0x16, 0x12, 0xe2, 0x62, 0x29, 0x2d, 0xca, 0x29,
+	0x96, 0x60, 0x54, 0x60, 0xd6, 0xe0, 0x0c, 0x02, 0xb3, 0x95, 0xa4, 0xb8, 0x58, 0x82, 0x52, 0x8b,
+	0x0b, 0x40, 0x72, 0x45, 0xa9, 0xc5, 0x05, 0x30, 0x39, 0x10, 0xdb, 0x48, 0x9f, 0x8b, 0x25, 0x20,
+	0x33, 0x2f, 0x5d, 0x48, 0x9d, 0x8b, 0x33, 0x08, 0x62, 0x8f, 0x7b, 0xbe, 0x10, 0xaf, 0x5e, 0x62,
+	0x41, 0xa6, 0x1e, 0xcc, 0x4c, 0x29, 0x4e, 0x30, 0x17, 0x64, 0x84, 0x12, 0x43, 0x12, 0x1b, 0xd8,
+	0x62, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xaa, 0x99, 0xda, 0x05, 0x97, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -100,7 +132,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type PingClient interface {
-	SayHello(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error)
+	RequestGo(ctx context.Context, in *ListURLs, opts ...grpc.CallOption) (*Resp, error)
 }
 
 type pingClient struct {
@@ -111,9 +143,9 @@ func NewPingClient(cc *grpc.ClientConn) PingClient {
 	return &pingClient{cc}
 }
 
-func (c *pingClient) SayHello(ctx context.Context, in *PingMessage, opts ...grpc.CallOption) (*PingMessage, error) {
-	out := new(PingMessage)
-	err := c.cc.Invoke(ctx, "/api.Ping/SayHello", in, out, opts...)
+func (c *pingClient) RequestGo(ctx context.Context, in *ListURLs, opts ...grpc.CallOption) (*Resp, error) {
+	out := new(Resp)
+	err := c.cc.Invoke(ctx, "/api.Ping/RequestGo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -122,27 +154,27 @@ func (c *pingClient) SayHello(ctx context.Context, in *PingMessage, opts ...grpc
 
 // PingServer is the server API for Ping service.
 type PingServer interface {
-	SayHello(context.Context, *PingMessage) (*PingMessage, error)
+	RequestGo(context.Context, *ListURLs) (*Resp, error)
 }
 
 func RegisterPingServer(s *grpc.Server, srv PingServer) {
 	s.RegisterService(&_Ping_serviceDesc, srv)
 }
 
-func _Ping_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingMessage)
+func _Ping_RequestGo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListURLs)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PingServer).SayHello(ctx, in)
+		return srv.(PingServer).RequestGo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.Ping/SayHello",
+		FullMethod: "/api.Ping/RequestGo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PingServer).SayHello(ctx, req.(*PingMessage))
+		return srv.(PingServer).RequestGo(ctx, req.(*ListURLs))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -152,8 +184,8 @@ var _Ping_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*PingServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _Ping_SayHello_Handler,
+			MethodName: "RequestGo",
+			Handler:    _Ping_RequestGo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

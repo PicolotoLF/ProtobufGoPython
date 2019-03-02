@@ -14,10 +14,10 @@ class PingStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.SayHello = channel.unary_unary(
-        '/api.Ping/SayHello',
-        request_serializer=requests__mercadolibre__pb2.PingMessage.SerializeToString,
-        response_deserializer=requests__mercadolibre__pb2.PingMessage.FromString,
+    self.RequestGo = channel.unary_unary(
+        '/api.Ping/RequestGo',
+        request_serializer=requests__mercadolibre__pb2.ListURLs.SerializeToString,
+        response_deserializer=requests__mercadolibre__pb2.Resp.FromString,
         )
 
 
@@ -25,7 +25,7 @@ class PingServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
-  def SayHello(self, request, context):
+  def RequestGo(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -35,10 +35,10 @@ class PingServicer(object):
 
 def add_PingServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'SayHello': grpc.unary_unary_rpc_method_handler(
-          servicer.SayHello,
-          request_deserializer=requests__mercadolibre__pb2.PingMessage.FromString,
-          response_serializer=requests__mercadolibre__pb2.PingMessage.SerializeToString,
+      'RequestGo': grpc.unary_unary_rpc_method_handler(
+          servicer.RequestGo,
+          request_deserializer=requests__mercadolibre__pb2.ListURLs.FromString,
+          response_serializer=requests__mercadolibre__pb2.Resp.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

@@ -1,9 +1,14 @@
 syntax = "proto3";
 package api;
-message PingMessage {
-  string greeting = 1;
-  string tos = 2;
+
+message ListURLs {
+  repeated string urls = 1;
 }
+
+message Resp{
+  repeated string resp = 1;
+}
+
 service Ping {
-  rpc SayHello(PingMessage) returns (PingMessage) {}
+  rpc RequestGo(ListURLs) returns (Resp) {}
 }
