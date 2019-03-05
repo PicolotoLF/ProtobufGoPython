@@ -32,6 +32,8 @@ func makeRequest(url string, ch chan string) {
 
 	if err != nil {
 		fmt.Println("Error: ", err)
+		bodyString := fmt.Sprintf("Request didn't work. GoLang error message: %s", err)
+		ch <- bodyString
 		return
 	}
 	defer resp.Body.Close()
@@ -40,7 +42,8 @@ func makeRequest(url string, ch chan string) {
 		bodyString := string(bodyBytes)
 		ch <- bodyString
 	} else {
-		bodyString := "Request didn't work"
+		bodyString := fmt.Sprintf("Request return status: %d with message %s",
+			resp.StatusCode, resp.Status)
 		ch <- bodyString
 	}
 
@@ -68,14 +71,6 @@ func getMlbs(urls []string) []string {
 	// fmt.Println(arrayResps)
 	return arrayResps
 }
-
-// func main() {
-// 	urls := []string{"https://api.mercadolibre.com/items/MLB1150156997",
-// 		"https://api.mercadolibre.com/items/MLB1150156997",
-// 		"https://api.mercadolibre.com/items/MLB1150156997",
-// 		"https://api.mercadolibre.com/items/MLB1150156997"}
-// 	getMlbs(urls)
-// }
 
 func main() {
 	lis, err := net.Listen("tcp", port)
