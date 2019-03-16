@@ -1,6 +1,6 @@
 import requests
 
-urls = ["https://api.mercadolibre.com/items/MLB1150156997"]*20
+urls = ["https://api.mercadolibre.com/items/MLB1150156997"]*50
 
 for url in urls:
     response = requests.get(url)
