@@ -32,16 +32,18 @@ func makeRequest(url string, ch chan string) {
 
 	if err != nil {
 		fmt.Println("Error: ", err)
-		return
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode == http.StatusOK {
-		bodyBytes, _ := ioutil.ReadAll(resp.Body)
-		bodyString := string(bodyBytes)
+		bodyString := "{\"error\": \"Invalid URL\"}"
 		ch <- bodyString
 	} else {
-		bodyString := "Request didn't work"
-		ch <- bodyString
+		defer resp.Body.Close()
+		if resp.StatusCode == http.StatusOK {
+			bodyBytes, _ := ioutil.ReadAll(resp.Body)
+			bodyString := string(bodyBytes)
+			ch <- bodyString
+		} else {
+			bodyString := fmt.Sprintf("{\"error\": \"Request not worked, status: %d\"}", resp.StatusCode)
+			ch <- bodyString
+		}
 	}
 
 }
