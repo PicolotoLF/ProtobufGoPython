@@ -20,7 +20,7 @@ def hello_world():
 
 
 def run(urls):
-    with grpc.insecure_channel('localhost:50051') as channel:
+    with grpc.insecure_channel('172.20.128.2:50051') as channel:
         stub = requests_mercadolibre_pb2_grpc.RequestStub(channel)
         response = stub.RequestGo(requests_mercadolibre_pb2.ListURLs(urls=urls))
         results = []

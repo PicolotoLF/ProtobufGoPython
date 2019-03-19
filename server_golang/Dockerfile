@@ -17,7 +17,6 @@ RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
 COPY . /app
 RUN go run /app/server_golang/main.go &
-
 WORKDIR /app
 
 CMD [ "./main" ]
