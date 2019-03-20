@@ -19,8 +19,13 @@ def hello_world():
     return "Its not a list"
 
 
+@app.route('/test')
+def test():
+    return "TESTE"
+
+
 def run(urls):
-    with grpc.insecure_channel('172.20.128.2:50051') as channel:
+    with grpc.insecure_channel('go_server:50051') as channel:
         stub = requests_mercadolibre_pb2_grpc.RequestStub(channel)
         response = stub.RequestGo(requests_mercadolibre_pb2.ListURLs(urls=urls))
         results = []
@@ -32,4 +37,4 @@ def run(urls):
 
 
 if __name__ == '__main__':
-    app.run("0.0.0.0", port=3000)
+    app.run("0.0.0.0", port=5000)
