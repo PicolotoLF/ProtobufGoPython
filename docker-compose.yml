@@ -1,0 +1,12 @@
+version: '3'
+services:
+    api:
+        build: ./api
+        ports:
+            - "5000:5000"
+    go_server:
+        build: ./server_golang
+        ports:
+          - "50051:50051"
+
+
