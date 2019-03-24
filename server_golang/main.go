@@ -71,14 +71,6 @@ func getMlbs(urls []string) []string {
 	return arrayResps
 }
 
-// func main() {
-// 	urls := []string{"https://api.mercadolibre.com/items/MLB1150156997",
-// 		"https://api.mercadolibre.com/items/MLB1150156997",
-// 		"https://api.mercadolibre.com/items/MLB1150156997",
-// 		"https://api.mercadolibre.com/items/MLB1150156997"}
-// 	getMlbs(urls)
-// }
-
 func main() {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
